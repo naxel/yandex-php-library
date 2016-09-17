@@ -14,7 +14,9 @@ class Filters extends ObjectModel
     protected $propNameMap = [];
 
     /**
-     * Add item
+     * @param Filter|array $filter
+     *
+     * @return $this
      */
     public function add($filter)
     {
@@ -28,7 +30,7 @@ class Filters extends ObjectModel
     }
 
     /**
-     * Get items
+     * @return Filter[]
      */
     public function getAll()
     {

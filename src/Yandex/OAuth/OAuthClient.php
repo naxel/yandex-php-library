@@ -199,6 +199,13 @@ class OAuthClient extends AbstractServiceClient
 
         $this->setAccessToken($result['access_token']);
 
+        $lifetimeInSeconds = $result['expires_in'];
+
+        $expireDateTime = new \DateTime();
+        $expireDateTime->add(new \DateInterval('PT'.$lifetimeInSeconds.'S'));
+
+        $this->setExpiresIn($expireDateTime);
+
         return $this;
     }
 }

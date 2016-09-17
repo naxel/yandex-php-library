@@ -12,6 +12,12 @@ class Query extends Model
 {
     protected $id = null;
 
+    /**
+     * Identifiers of counters. Used instead of the parameter id.
+     * @var int[]
+     */
+    protected $ids = null;
+
     protected $preset = null;
 
     protected $dimensions = null;
@@ -62,6 +68,29 @@ class Query extends Model
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
+    }
+
+
+    /**
+     * Retrieve the ids property
+     *
+     * @return int[]|null
+     */
+    public function getIds()
+    {
+        return $this->ids;
+    }
+
+    /**
+     * Set the ids property
+     *
+     * @param int[] $ids
+     * @return $this
+     */
+    public function setIds($ids)
+    {
+        $this->ids = $ids;
         return $this;
     }
 

@@ -66,6 +66,12 @@ abstract class AbstractServiceClient extends AbstractPackage
      */
     protected $accessToken = '';
 
+
+    /**
+     * @var \DateTime
+     */
+    protected $expiresIn = null;
+
     /**
      * @var string
      */
@@ -112,6 +118,22 @@ abstract class AbstractServiceClient extends AbstractPackage
     public function getAccessToken()
     {
         return $this->accessToken;
+    }
+
+    /**
+     * @param \DateTime $expiresIn
+     */
+    public function setExpiresIn($expiresIn)
+    {
+        $this->expiresIn = $expiresIn;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExpiresIn()
+    {
+        return $this->expiresIn;
     }
 
     /**

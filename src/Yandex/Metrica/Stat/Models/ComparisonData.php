@@ -29,6 +29,7 @@ class ComparisonData extends ObjectModel
 
     /**
      * Get items
+     * @return ComparisonItems[]
      */
     public function getAll()
     {

@@ -23,18 +23,21 @@ class ComparisonTest extends TestCase
             ->setDate1A($fixtures["query"]["date1_a"])
             ->setDate2A($fixtures["query"]["date2_a"])
             ->setDate1B($fixtures["query"]["date1_b"])
-            ->setDate2B($fixtures["query"]["date2_b"]);
+            ->setDate2B($fixtures["query"]["date2_b"])
+            ->setFiltersA($fixtures["query"]["filters_a"])
+            ->setFiltersB($fixtures["query"]["filters_b"]);
 
         $metrics = new Models\ComparisonMetrics();
         $metrics
             ->setA($fixtures["data"][0]["metrics"]["a"])
             ->setB($fixtures["data"][0]["metrics"]["b"]);
 
+        $dimensions = new Models\Dimensions();
+        $dimensions->add($fixtures["query"]["dimensions"]);
         $items = new Models\ComparisonItems();
         $items
             ->setMetrics($metrics)
-            ->setDimensions(new Models\Dimensions([]))
-            ->setMetrics($metrics);
+            ->setDimensions($dimensions);
 
         $data = new Models\ComparisonData();
         $data->add($items);
@@ -65,11 +68,14 @@ class ComparisonTest extends TestCase
         $this->assertEquals($fixtures["query"]["date2_a"], $comparison->getQuery()->getDate2A());
         $this->assertEquals($fixtures["query"]["date1_b"], $comparison->getQuery()->getDate1B());
         $this->assertEquals($fixtures["query"]["date2_b"], $comparison->getQuery()->getDate2B());
+        $this->assertEquals($fixtures["query"]["filters_a"], $comparison->getQuery()->getFiltersA());
+        $this->assertEquals($fixtures["query"]["filters_b"], $comparison->getQuery()->getFiltersB());
 
         $getData = $comparison->getData()->getAll();
 
         $this->assertEquals($fixtures["data"][0]["metrics"]["a"], $getData[0]->getMetrics()->getA());
         $this->assertEquals($fixtures["data"][0]["metrics"]["b"], $getData[0]->getMetrics()->getB());
+        $this->assertEquals($fixtures["data"][0]["dimensions"], $getData[0]->getDimensions()->getAll()[0]->toArray());
 
         $this->assertEquals($fixtures["total_rows"], $comparison->getTotalRows());
         $this->assertEquals($fixtures["sampled"], $comparison->getSampled());

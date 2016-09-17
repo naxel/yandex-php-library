@@ -14,7 +14,9 @@ class Goals extends ObjectModel
     protected $propNameMap = [];
 
     /**
-     * Add item
+     * @param Goal|array $goal
+     *
+     * @return $this
      */
     public function add($goal)
     {
@@ -28,7 +30,7 @@ class Goals extends ObjectModel
     }
 
     /**
-     * Get items
+     * @return Goal[]
      */
     public function getAll()
     {

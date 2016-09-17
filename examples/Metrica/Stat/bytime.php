@@ -24,7 +24,8 @@ if (isset($_COOKIE['yaAccessToken']) && isset($_COOKIE['yaClientId'])) {
                 ->setId($counterId)
                 ->setDate1('6daysAgo')
                 ->setDate2('today')
-                ->setGroup('day');
+                ->setGroup('day')
+                ->setFilters("ym:s:isMobile!='Yes'");
             $data = $statClient->data()->getByTime($paramsModel);
         }
     } catch (\Exception $ex) {

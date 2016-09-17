@@ -12,4 +12,17 @@ class Accounts
             ]
         ]
     ];
+
+    public static $badRequestFixtures =
+        [
+            "errors" => [
+                [
+                    "error_type" => "invalid_parameter",
+                    "message"    => "Error message"
+                ]
+            ],
+            "code"    => 400,
+            "message" => "Error message"
+        ];
+
 }

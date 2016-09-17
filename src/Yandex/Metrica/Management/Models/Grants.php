@@ -14,7 +14,9 @@ class Grants extends ObjectModel
     protected $propNameMap = [];
 
     /**
-     * Add item
+     * @param array|Grant $grant
+     *
+     * @return $this
      */
     public function add($grant)
     {
@@ -28,7 +30,7 @@ class Grants extends ObjectModel
     }
 
     /**
-     * Get items
+     * @return Grant[]
      */
     public function getAll()
     {

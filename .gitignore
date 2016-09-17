@@ -1,7 +1,7 @@
 .DS_Store
 .idea
 vendor/*
-/coverage
+coverage
 composer.phar
 composer.lock
 .vagrant

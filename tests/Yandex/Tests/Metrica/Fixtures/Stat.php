@@ -372,6 +372,174 @@ class Stat
         ]
     ];
 
+    public static $byTimeWithGroupByDaysFixtures = [
+        "query"             => [
+            "ids"             => [36066170],
+            "dimensions"      => [],
+            "metrics"         => ["ym:s:hits"],
+            "sort"            => ["-ym:s:hits"],
+            "date1"           => "2016-03-29",
+            "date2"           => "2016-04-04",
+            'filters'         => "ym:s:isMobile!='Yes'",
+            "group"           => "day",
+            "auto_group_size" => "1",
+            "quantile"        => "50",
+            "attribution"     => "Last",
+            "currency"        => "UAH",
+            "auto_group_type" => "day"
+        ],
+        "data"              => [
+            [
+                "dimensions" => [],
+                "metrics"    => [
+                    [
+                        4.0,
+                        2.0,
+                        7.0,
+                        5.0,
+                        3.0,
+                        2.0,
+                        0.0
+                    ]
+                ]
+            ]
+        ],
+        "total_rows"        => 6,
+        "sampled"           => false,
+        "sample_share"      => 1.0,
+        "sample_size"       => 19,
+        "sample_space"      => 19,
+        "data_lag"          => 62,
+        "totals"            => [[23.0]],
+        "last_period_index" => 6,
+        "time_intervals"    => [
+            [
+                "2016-03-29",
+                "2016-03-29"
+            ],
+            [
+                "2016-03-30",
+                "2016-03-30"
+            ],
+            [
+                "2016-03-31",
+                "2016-03-31"
+            ],
+            [
+                "2016-04-01",
+                "2016-04-01"
+            ],
+            [
+                "2016-04-02",
+                "2016-04-02"
+            ],
+            [
+                "2016-04-03",
+                "2016-04-03"
+            ],
+            [
+                "2016-04-04",
+                "2016-04-04"
+            ]
+        ]
+    ];
+
+    public static $byTimeParamsFixtures = [
+        "id"                => 2138128,
+        "preset"            => "tech_platforms",
+        "dimensions"        => [
+            "ym:s:operatingSystemRoot",
+            "ym:s:operatingSystem"
+        ],
+        "metrics"           => [
+            "ym:s:visits",
+            "ym:s:pageviews",
+            "ym:s:bounceRate",
+            "ym:s:pageDepth",
+            "ym:s:avgVisitDurationSeconds"
+        ],
+        "sort"              => [
+            "-ym:s:visits"
+        ],
+        "limit"             => 100,
+        "offset"            => 1,
+        "date1"             => "2014-07-16",
+        "date2"             => "2014-07-22",
+        'filters'           => "ym:s:isMobile!='Yes'",
+        'accuracy'          => 'medium',
+        'callback'          => null,
+        'include_undefined' => true,
+        'lang'              => 'ru',
+        'pretty'            => true,
+        'group'             => 'all',
+        'row_ids'           => null,
+        'top_keys'          => 7
+    ];
+
+    public static $comparisonParamsFixtures = [
+        "id"                => 2138128,
+        "preset"            => "tech_platforms",
+        "dimensions"        => [
+            "ym:s:operatingSystemRoot",
+            "ym:s:operatingSystem"
+        ],
+        "metrics"           => [
+            "ym:s:visits",
+            "ym:s:pageviews",
+            "ym:s:bounceRate",
+            "ym:s:pageDepth",
+            "ym:s:avgVisitDurationSeconds"
+        ],
+        "sort"              => [
+            "-ym:s:visits"
+        ],
+        "limit"             => 100,
+        "offset"            => 1,
+        'filters'           => "ym:s:isMobile!='Yes'",
+        'filters_a'         => "ym:s:isMobile!='Yes'",
+        'filters_b'         => "ym:s:isMobile=='Yes'",
+        "date1_a"           => "2014-07-16",
+        "date2_a"           => "2014-07-22",
+        "date1_b"           => "2014-07-16",
+        "date2_b"           => "2014-07-22",
+        'accuracy'          => 'medium',
+        'callback'          => null,
+        'include_undefined' => true,
+        'lang'              => 'ru',
+        'pretty'            => true,
+        'parent_id'         => null
+    ];
+
+
+    public static $tableParamsFixtures = [
+        "id"                => 2138128,
+        "preset"            => "tech_platforms",
+        "dimensions"        => [
+            "ym:s:operatingSystemRoot",
+            "ym:s:operatingSystem"
+        ],
+        "metrics"           => [
+            "ym:s:visits",
+            "ym:s:pageviews",
+            "ym:s:bounceRate",
+            "ym:s:pageDepth",
+            "ym:s:avgVisitDurationSeconds"
+        ],
+        "sort"              => [
+            "-ym:s:visits"
+        ],
+        "limit"             => 100,
+        "offset"            => 1,
+        'filters'           => "ym:s:isMobile!='Yes'",
+        "date1"           => "2014-07-16",
+        "date2"           => "2014-07-22",
+        'accuracy'          => 'medium',
+        'callback'          => null,
+        'include_undefined' => true,
+        'lang'              => 'ru',
+        'pretty'            => true
+    ];
+
     public static $comparisonFixtures = [
         "query" => [
             "id" => 2138128,
@@ -385,7 +553,9 @@ class Stat
             "date1_a" => "2014-07-16",
             "date2_a" => "2014-07-22",
             "date1_b" => "2014-07-16",
-            "date2_b" => "2014-07-22"
+            "date2_b" => "2014-07-22",
+            'filters_a' => "ym:s:isMobile!='Yes'",
+            'filters_b' => "ym:s:isMobile=='Yes'"
         ],
         "data" => [
             0 => [

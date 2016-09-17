@@ -14,7 +14,9 @@ class Delegates extends ObjectModel
     protected $propNameMap = [];
 
     /**
-     * Add item
+     * @param Delegate|array $delegate
+     *
+     * @return $this
      */
     public function add($delegate)
     {
@@ -28,7 +30,7 @@ class Delegates extends ObjectModel
     }
 
     /**
-     * Get items
+     * @return Delegate[]
      */
     public function getAll()
     {

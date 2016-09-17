@@ -11,6 +11,7 @@
  */
 namespace Yandex\Metrica;
 
+use GuzzleHttp\ClientInterface;
 use Yandex\Common\AbstractServiceClient;
 use Psr\Http\Message\UriInterface;
 use GuzzleHttp\Psr7\Response;
@@ -18,6 +19,7 @@ use GuzzleHttp\Exception\ClientException;
 use Yandex\Common\Exception\ForbiddenException;
 use Yandex\Common\Exception\UnauthorizedException;
 use Yandex\Common\Exception\TooManyRequestsException;
+use Yandex\Metrica\Exception\BadRequestException;
 use Yandex\Metrica\Exception\MetricaException;
 
 /**
@@ -40,10 +42,14 @@ class MetricaClient extends AbstractServiceClient
 
     /**
      * @param string $token access token
+     * @param ClientInterface $client
      */
-    public function __construct($token = '')
+    public function __construct($token = '', ClientInterface $client = null)
     {
         $this->setAccessToken($token);
+        if (!is_null($client)) {
+            $this->setClient($client);
+        }
     }
 
     /**
@@ -76,9 +82,11 @@ class MetricaClient extends AbstractServiceClient
      *
      * @return Response
      *
+     * @throws BadRequestException
      * @throws ForbiddenException
-     * @throws UnauthorizedException
      * @throws MetricaException
+     * @throws TooManyRequestsException
+     * @throws UnauthorizedException
      */
     protected function sendRequest($method, $uri, array $options = [])
     {
@@ -88,6 +96,18 @@ class MetricaClient extends AbstractServiceClient
             $result = $ex->getResponse();
             $code = $result->getStatusCode();
             $message = $result->getReasonPhrase();
+
+            $body = $result->getBody();
+            if ($body) {
+                $jsonBody = json_decode($body);
+                if ($jsonBody && isset($jsonBody->message)) {
+                    $message = $jsonBody->message;
+                }
+            }
+
+            if ($code === 400) {
+                throw new BadRequestException($message);
+            }
 
             if ($code === 403) {
                 throw new ForbiddenException($message);

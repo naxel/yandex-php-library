@@ -182,6 +182,14 @@ class PartnerClient extends AbstractServiceClient
     /**
      * @return string
      */
+    public function getCampaignId()
+    {
+        return $this->campaignId;
+    }
+
+    /**
+     * @return string
+     */
     public function getClientId()
     {
         return $this->clientId;

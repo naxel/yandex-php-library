@@ -14,7 +14,9 @@ class Operations extends ObjectModel
     protected $propNameMap = [];
 
     /**
-     * Add item
+     * @param array|Operation $operation
+     *
+     * @return $this
      */
     public function add($operation)
     {
@@ -28,7 +30,7 @@ class Operations extends ObjectModel
     }
 
     /**
-     * Get items
+     * @return Operation[]
      */
     public function getAll()
     {

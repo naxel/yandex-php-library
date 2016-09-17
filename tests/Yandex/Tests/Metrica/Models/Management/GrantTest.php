@@ -24,5 +24,14 @@ class GrantTest extends TestCase
         $this->assertEquals($fixtures["grant"]["created_at"], $grant->getCreatedAt());
         $this->assertEquals($fixtures["grant"]["comment"], $grant->getComment());
     }
+
+    public function testGrants()
+    {
+        $fixtures = Grants::$grantFixtures;
+        $grants    = new Models\Grants();
+        $grants->add(new Models\Grant($fixtures["grant"]));
+        $grants2 = new Models\Grants([$fixtures["grant"]]);
+        $this->assertEquals($grants->getAll()[0]->toArray(), $grants2->getAll()[0]->toArray());
+    }
 }
  

@@ -31,5 +31,13 @@ class FilterTest extends TestCase
         $this->assertEquals($fixtures["filter"]["start_ip"], $filter->getStartIp());
         $this->assertEquals($fixtures["filter"]["end_ip"], $filter->getEndIp());
     }
+
+    public function testFilters()
+    {
+        $fixtures = Filters::$filtersFixtures;
+        $filters  = new Models\Filters();
+        $filters->add(new Models\Filter($fixtures["filters"][0]));
+        $filters2 = new Models\Filters($fixtures["filters"]);
+        $this->assertEquals($filters->getAll()[0]->toArray(), $filters2->getAll()[0]->toArray());
+    }
 }
- 

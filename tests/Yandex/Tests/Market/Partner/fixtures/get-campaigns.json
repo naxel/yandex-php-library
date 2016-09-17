@@ -1,0 +1,30 @@
+{
+  "campaigns": [
+    {
+      "id":10001,
+      "domain":"nif-nif.yandex.ru",
+      "state":2,
+      "stateReasons":[6,9],
+      "stateCpa":"OFF",
+      "stateReasonsCpa":[
+        "CPA_CPC",
+        "CPA_PARTNER",
+        "CPA_QUALITY_OTHER"
+      ]
+    },
+    {
+      "id":10002,
+      "domain":"nuf-nuf.yandex.ru",
+      "state":4,
+      "stateReasons":[21],
+      "stateCpa":"OFF",
+      "stateReasonsCpa":["CPA_QUALITY_OTHER"]
+    },
+    {
+      "id":10003,
+      "domain":"naf-naf.yandex.ru",
+      "state":1,
+      "stateCpa":"ON"
+    }
+  ]
+}

@@ -60,6 +60,40 @@ class OAuthClientTest extends TestCase
     }
 
     /**
+     * @param $accessToken
+     * @param $expectedAccessToken
+     *
+     * @dataProvider dataSetGetAccessToken
+     */
+    public function testSetGetExpiresIn($expiresIn, $expectedExpiresIn)
+    {
+        $oauthClient = $this->getOauthClient();
+
+        $this->assertEmpty($oauthClient->getExpiresIn());
+
+        $oauthClient->setExpiresIn($expiresIn);
+
+        $this->assertEquals($expectedExpiresIn, $oauthClient->getExpiresIn());
+    }
+
+    /**
+     * @return array
+     */
+    public function dataSetGetExpiresIn()
+    {
+        return [
+            'empty expires_in'     => [
+                'expiresIn'         => null,
+                'expectedExpiresIn' => null
+            ],
+            'not empty expires_in' => [
+                'expiresIn'         => new \DateTime('2020-01-01 00:00:00'),
+                'expectedExpiresIn' => new \DateTime('2020-01-01 00:00:00')
+            ],
+        ];
+    }
+
+    /**
      * @param $clientId
      * @param $expectedClientId
      *

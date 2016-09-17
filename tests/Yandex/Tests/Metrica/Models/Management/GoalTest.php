@@ -38,5 +38,13 @@ class GoalTest extends TestCase
         $this->assertEquals($fixtures["goal"]["conditions"][0]["type"], $getConditions[0]->getType());
         $this->assertEquals($fixtures["goal"]["conditions"][0]["url"], $getConditions[0]->getUrl());
     }
+
+    public function testGoals()
+    {
+        $fixtures = Goals::$goalFixtures;
+        $goals    = new Models\Goals();
+        $goals->add(new Models\Goal($fixtures["goal"]));
+        $goals2 = new Models\Goals([$fixtures["goal"]]);
+        $this->assertEquals($goals->getAll()[0]->toArray(), $goals2->getAll()[0]->toArray());
+    }
 }
- 

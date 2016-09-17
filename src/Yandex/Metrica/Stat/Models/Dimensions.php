@@ -29,6 +29,7 @@ class Dimensions extends ObjectModel
 
     /**
      * Get items
+     * @return Dimension[]
      */
     public function getAll()
     {
